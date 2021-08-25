@@ -46,6 +46,9 @@ namespace MMORPG.Util
                     return;
                 case PacketType.Log:
                     return;
+                case PacketType.Actor:
+                    ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet),client.ep);
+                    return;
                 default:
                     return;
             }

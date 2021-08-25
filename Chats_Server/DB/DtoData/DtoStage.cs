@@ -2,7 +2,6 @@
 {
     public class DtoStage : DtoBase
     {
-        int index;
 
 
     }

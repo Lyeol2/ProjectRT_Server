@@ -59,12 +59,15 @@ namespace MMORPG.Network
 
                 Socket sock = serverSocket.Accept();
 
+
                 Console.WriteLine("접속을 받았습니다.");
 
                 if (!sock.Connected)
                 {
                     continue;
                 }
+
+                sock.NoDelay = true;
 
                 Client client = new Client();
                 client.socket = sock;
@@ -110,7 +113,6 @@ namespace MMORPG.Network
 
 
             WriteLog($"[-] : {client.ep}", true);
-
 
 
             client.socket.Close();
