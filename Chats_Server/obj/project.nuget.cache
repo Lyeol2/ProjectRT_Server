@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "R+hcPReSlpAKZwFBPy7AtOtKkvUgNEnYYZHf907YySRwAglM+rM8TYMQPSyrNxi934JVMMZ4Fs2dFATtS5gwCg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\wjs\\Documents\\GitHub\\ProjectRT_Server\\Chats_Server\\MMORPG.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\wjs\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
