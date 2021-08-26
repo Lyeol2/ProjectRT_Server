@@ -27,7 +27,12 @@ namespace MMORPG.Network
 
     public class ServerManager : Singleton<ServerManager>
     {
-        public static List<Client> clients = new List<Client>();
+        public List<Client> clients = new List<Client>();
+
+        public List<Client> inGameClient = new List<Client>();
+
+
+        public Queue<KeyValuePair<Client, Packet>> recvQueue = new Queue<KeyValuePair<Client, Packet>>();
 
         public static Socket serverSocket;
 
@@ -48,7 +53,10 @@ namespace MMORPG.Network
             WriteLog("서버를 시작합니다");
             Console.WriteLine("서버 접속을 받는 쓰레드를 생성합니다");
             Thread AccpectThread = new Thread(() => TryConnectServer());
-            AccpectThread.Start();
+            AccpectThread.Start(); 
+            
+            Thread ProcessThread = new Thread(() => ReceiveProcess());
+            ProcessThread.Start();
 
             return true;
         }
@@ -85,6 +93,17 @@ namespace MMORPG.Network
 
             }
         }
+        public void ReceiveProcess()
+        {
+            while (true)
+            {
+                while (recvQueue.Count > 0)
+                {
+                    var que = recvQueue.Dequeue();
+                    PacketProcessHelper.PacketProcess(que.Key, que.Value);
+                }
+            }
+        }
         /// <summary>
         /// 클라이언트로부터 데이터를 받습니다.
         /// </summary>
@@ -95,7 +114,15 @@ namespace MMORPG.Network
             {
                 byte[] buffer = new byte[4096];
 
-                int n = client.socket.Receive(buffer, SocketFlags.None);
+                int n;
+                try
+                {
+                    n = client.socket.Receive(buffer, SocketFlags.None);
+                }
+                catch(Exception ex)
+                {
+                    break;
+                }
 
 
                 if (n == 0) continue;
@@ -105,8 +132,8 @@ namespace MMORPG.Network
 
                 if (packet.Contains("disconnect")) break;
                 // 버퍼가 비어있지않다면
+                recvQueue.Enqueue(new KeyValuePair<Client, Packet>(client, SerializeHelper.FromJson<Packet>(packet)));
 
-                PacketProcessHelper.PacketProcess(client, SerializeHelper.FromJson<Packet>(packet));
 
 
             }
@@ -141,15 +168,14 @@ namespace MMORPG.Network
         {
             if (exClient == null)
             {
-                foreach (var client in clients)
+                foreach (var client in inGameClient)
                 {
-
                     SendClient(data, client.ep);
                 }
             }
             if (exClient != null)
             {
-                foreach (var client in clients)
+                foreach (var client in inGameClient)
                 {
                     if (exClient.Exists(_ => (_ == client.ep))) continue;
 
@@ -163,14 +189,14 @@ namespace MMORPG.Network
 
             if (exClient == null)
             {
-                foreach (var client in clients)
+                foreach (var client in inGameClient)
                 {
                     SendClient(data, client.ep);
                 }
             }
             if (exClient != null)
             {
-                foreach (var client in clients)
+                foreach (var client in inGameClient)
                 {
                     if (exClient == client.ep) continue;
 
@@ -182,9 +208,9 @@ namespace MMORPG.Network
         {
             if (isPrint) Console.WriteLine(log);
 
-            StreamWriter writer = File.AppendText(DBPath.DBLog);
-            writer.WriteLine(log);
-            writer.Close();
+            //StreamWriter writer = File.AppendText(DBPath.DBLog);
+            //writer.WriteLine(log);
+            //writer.Close();
 
 
         }

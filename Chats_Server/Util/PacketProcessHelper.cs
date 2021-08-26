@@ -13,6 +13,7 @@ namespace MMORPG.Util
 
     public static class PacketProcessHelper
     {
+
         public static Packet CreatePacket(PacketType type, int errorCode = 0, string log = null)
         {
             var packet = new Packet();
@@ -42,12 +43,15 @@ namespace MMORPG.Util
                     return;
                 case PacketType.Logout:
                     return;
+                case PacketType.Join:
+                    ServerManager.Instance.inGameClient.Add(client);
+                    return;
                 case PacketType.Message:
                     return;
                 case PacketType.Log:
                     return;
                 case PacketType.Actor:
-                    ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet),client.ep);
+                    ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
                     return;
                 default:
                     return;
@@ -75,11 +79,11 @@ namespace MMORPG.Util
                 return;
             }
 
+
             dto.character.x = 0;
             dto.character.y = 0;
             dto.character.z = 0;
-            //dto.character.guid = Guid.NewGuid().ToString();
-            dto.character.guid = "sample";
+            dto.character.guid = Guid.NewGuid().ToString();
             dto.character.level = 0;
             dto.character.exp = 0;
 
@@ -93,7 +97,9 @@ namespace MMORPG.Util
 
             client.account = dto.account;
 
+
             ServerManager.Instance.SendClient(SerializeHelper.DataToByte(Packet), client.ep);
+
 
             return; 
         }
@@ -111,15 +117,12 @@ namespace MMORPG.Util
                 return;
             }
 
-
             client.account = dto;
 
             var Packet = CreatePacket(PacketType.Login);
             Packet.data = SerializeHelper.ToJson(dblist.Find(_ => _.account.id == dto.id));
             ServerManager.Instance.SendClient(
                 SerializeHelper.DataToByte(Packet), client.ep);
-
-
 
             return;
         }

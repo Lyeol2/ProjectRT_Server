@@ -34,9 +34,9 @@ namespace MMORPG
                 // 콘솔에 대한 명령.
                 string a = Console.ReadLine();
 
-                if (!ServerManager.clients.Exists(_ => _.account.id == a)) continue;
+                if (!ServerManager.Instance.clients.Exists(_ => _.account.id == a)) continue;
 
-                var client = ServerManager.clients.Find(_ => _.account.id == a);
+                var client = ServerManager.Instance.clients.Find(_ => _.account.id == a);
 
                 DtoActor dto = new DtoActor();
                 dto.x = 1;

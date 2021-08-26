@@ -1,1 +1,47 @@
-[{"account":{"id":"frog100f","password":"wjsgudfuf123","log":null,"errorCode":0},"character":{"nickName":"도도한떡볶이","level":0,"exp":0.0,"guid":"sample","x":0.0,"y":0.0,"z":0.0,"log":null,"errorCode":0},"stage":null,"log":null,"errorCode":0}]
+[
+  
+  {
+    "account": {
+      "id": "frog100f",
+      "password": "wjsgudfuf123",
+      "log": null,
+      "errorCode": 0
+    },
+    "character": {
+      "nickName": "도도한떡볶이",
+      "level": 0,
+      "exp": 0.0,
+      "guid": "sample",
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0,
+      "log": null,
+      "errorCode": 0
+    },
+    "stage": null,
+    "log": null,
+    "errorCode": 0
+  },
+  {
+    "account": {
+      "id": "frog200f",
+      "password": "wjsgudfuf123",
+      "log": null,
+      "errorCode": 0
+    },
+    "character": {
+      "nickName": "min9348",
+      "level": 0,
+      "exp": 0.0,
+      "guid": "dcd40520-d719-4749-9237-71a868b1fb5f",
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0,
+      "log": null,
+      "errorCode": 0
+    },
+    "stage": null,
+    "log": null,
+    "errorCode": 0
+  }
+]

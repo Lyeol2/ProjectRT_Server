@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -8,15 +9,32 @@ namespace MMORPG.Util
     {
         public static string ToJson<T>(T data)
         {
+            
             return JsonConvert.SerializeObject(data);
         }
         public static T FromJson<T>(string data) where T : class
         {
-            return JsonConvert.DeserializeObject<T>(data);
+            try
+            {
+                return JsonConvert.DeserializeObject<T>(data);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(data);
+                return null;
+            }
         }
         public static List<T> JsonToList<T>(string json)
         {
-            return JsonConvert.DeserializeObject<List<T>>(json);
+            try
+            {
+                return JsonConvert.DeserializeObject<List<T>>(json);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(json);
+                return null;
+            }
         }
 
         public static string ByteToString(byte[] data)
