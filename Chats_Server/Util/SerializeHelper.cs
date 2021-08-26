@@ -12,7 +12,7 @@ namespace MMORPG.Util
             
             return JsonConvert.SerializeObject(data);
         }
-        public static T FromJson<T>(string data) where T : class
+        public static T FromJson<T>(string data)
         {
             try
             {
@@ -21,7 +21,7 @@ namespace MMORPG.Util
             catch(Exception ex)
             {
                 Console.WriteLine(data);
-                return null;
+                throw new Exception("비정상적 데이터가 들어왔습니다.");
             }
         }
         public static List<T> JsonToList<T>(string json)
@@ -51,7 +51,7 @@ namespace MMORPG.Util
 
             return StringToByte(json);
         }
-        public static T ByteToData<T>(byte[] data) where T : class
+        public static T ByteToData<T>(byte[] data)
         {
             string json = ByteToString(data);
 

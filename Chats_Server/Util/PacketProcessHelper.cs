@@ -25,7 +25,16 @@ namespace MMORPG.Util
         }
         public static void PacketProcess(Client client, Packet packet)
         {
-            int errorCode = SerializeHelper.FromJson<DtoBase>(packet.data).errorCode;
+            int errorCode;
+
+            try
+            {
+                errorCode = SerializeHelper.FromJson<DtoBase>(packet.data).errorCode;
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
 
             if (errorCode > 0)
             {
@@ -44,7 +53,7 @@ namespace MMORPG.Util
                 case PacketType.Logout:
                     return;
                 case PacketType.Join:
-                    ServerManager.Instance.inGameClient.Add(client);
+                    client.IsLogin = true;
                     return;
                 case PacketType.Message:
                     return;

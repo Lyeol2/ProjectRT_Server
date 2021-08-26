@@ -22,15 +22,14 @@ namespace MMORPG.Network
         // 클라이언트의 ep
         public string ep;
 
+        public bool IsLogin = false;
+
         public DtoAccount account;
     }
 
     public class ServerManager : Singleton<ServerManager>
     {
         public List<Client> clients = new List<Client>();
-
-        public List<Client> inGameClient = new List<Client>();
-
 
         public Queue<KeyValuePair<Client, Packet>> recvQueue = new Queue<KeyValuePair<Client, Packet>>();
 
@@ -100,7 +99,15 @@ namespace MMORPG.Network
                 while (recvQueue.Count > 0)
                 {
                     var que = recvQueue.Dequeue();
-                    PacketProcessHelper.PacketProcess(que.Key, que.Value);
+
+                    try
+                    {
+                        PacketProcessHelper.PacketProcess(que.Key, que.Value);
+                    }
+                    catch
+                    {
+                        break;
+                    }
                 }
             }
         }
@@ -119,11 +126,10 @@ namespace MMORPG.Network
                 {
                     n = client.socket.Receive(buffer, SocketFlags.None);
                 }
-                catch(Exception ex)
+                catch
                 {
                     break;
                 }
-
 
                 if (n == 0) continue;
 
@@ -131,8 +137,21 @@ namespace MMORPG.Network
                 WriteLog($"{client.ep} => {packet}");
 
                 if (packet.Contains("disconnect")) break;
+
+                Packet pack;
+
+                try
+                {
+                     pack = SerializeHelper.FromJson<Packet>(packet);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine($"{client.ep} : {ex}");
+                    continue;
+                }
                 // 버퍼가 비어있지않다면
-                recvQueue.Enqueue(new KeyValuePair<Client, Packet>(client, SerializeHelper.FromJson<Packet>(packet)));
+
+                recvQueue.Enqueue(new KeyValuePair<Client, Packet>(client, pack));
 
 
 
@@ -156,8 +175,16 @@ namespace MMORPG.Network
             // 아이디를 통해 등록된 클라이언트 검색
             Client client = clients.Find(_ => (_.ep == ep));
             WriteLog($"{client.ep} <= {SerializeHelper.ByteToString(data)}");
-            // 비동기방식으로 처리
-            client.socket.Send(data);
+
+
+            try
+            {
+                client.socket.Send(data, SocketFlags.None);
+            }
+            catch
+            {
+                return;
+            }
         }
         /// <summary>
         /// 모든 클라이언트에 데이터를 전송합니다.
@@ -168,18 +195,24 @@ namespace MMORPG.Network
         {
             if (exClient == null)
             {
-                foreach (var client in inGameClient)
+                foreach (var client in clients)
                 {
-                    SendClient(data, client.ep);
+                    if (client.IsLogin)
+                    {
+                        SendClient(data, client.ep);
+                    }
                 }
             }
             if (exClient != null)
             {
-                foreach (var client in inGameClient)
+                foreach (var client in clients)
                 {
                     if (exClient.Exists(_ => (_ == client.ep))) continue;
 
-                    SendClient(data, client.ep);
+                    if (client.IsLogin)
+                    {
+                        SendClient(data, client.ep);
+                    }
                 }
             }
         }
@@ -189,18 +222,24 @@ namespace MMORPG.Network
 
             if (exClient == null)
             {
-                foreach (var client in inGameClient)
+                foreach (var client in clients)
                 {
-                    SendClient(data, client.ep);
+                    if (client.IsLogin)
+                    {
+                        SendClient(data, client.ep);
+                    }
                 }
             }
             if (exClient != null)
             {
-                foreach (var client in inGameClient)
+                foreach (var client in clients)
                 {
                     if (exClient == client.ep) continue;
 
-                    SendClient(data, client.ep);
+                    if (client.IsLogin)
+                    {
+                        SendClient(data, client.ep);
+                    }
                 }
             }
         }
