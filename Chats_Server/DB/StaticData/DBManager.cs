@@ -1,11 +1,16 @@
 ﻿using MMORPG.Util;
 using System.Collections.Generic;
 using System.IO;
+using MMORPG.Define;
 
 namespace MMORPG.DataBase
 {
     public class DBManager : Singleton<DBManager>
     {
+        public void Initialize()
+        {
+
+        }
         public List<T> ReadFile<T>(string path)
         {
             string data = File.ReadAllText(path);

@@ -6,11 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DB\StaticData\Exel\**" />
+    <EmbeddedResource Remove="DB\StaticData\Exel\**" />
+    <None Remove="DB\StaticData\Exel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DB\StaticData\Exel\" />
+    <Folder Include="DB\StaticData\DB\Region\" />
+    <Folder Include="DB\StaticData\Json\" />
   </ItemGroup>
 
 </Project>

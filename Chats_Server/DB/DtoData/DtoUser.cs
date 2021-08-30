@@ -1,7 +1,7 @@
 ﻿namespace MMORPG.DataBase
 { 
     [System.Serializable]
-    public class DtoUser : DtoBase
+    public class DtoUser
     {
         public DtoAccount account;
         public DtoCharacter character;

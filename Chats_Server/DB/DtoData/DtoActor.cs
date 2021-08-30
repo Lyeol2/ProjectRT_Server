@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MMORPG.DataBase
 {
-    public class DtoActor : DtoBase
+    public class DtoActor
     {
         public string guid;
 

@@ -1,10 +1,11 @@
-﻿using MMORPG.DataBase;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using MMORPG.DataBase;
 using MMORPG.DB;
 using MMORPG.Define;
 using MMORPG.Network;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace MMORPG.Util
 {
@@ -17,9 +18,10 @@ namespace MMORPG.Util
         public static Packet CreatePacket(PacketType type, int errorCode = 0, string log = null)
         {
             var packet = new Packet();
+
             packet.type = type;
-            var Dto = new DtoBase() { errorCode = errorCode, log = log };
-            packet.data = SerializeHelper.ToJson(Dto);
+            packet.errorCode = errorCode;
+            packet.log = log;
 
             return packet;
         }
@@ -29,7 +31,7 @@ namespace MMORPG.Util
 
             try
             {
-                errorCode = SerializeHelper.FromJson<DtoBase>(packet.data).errorCode;
+                errorCode = packet.errorCode;
             }
             catch(Exception ex)
             {
@@ -60,6 +62,7 @@ namespace MMORPG.Util
                 case PacketType.Log:
                     return;
                 case PacketType.Actor:
+   
                     ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
                     return;
                 default:
@@ -96,6 +99,9 @@ namespace MMORPG.Util
             dto.character.level = 0;
             dto.character.exp = 0;
 
+            dto.stage.prevStageIndex = 0;
+            dto.stage.stageName = "LobbyStage";
+
             dblist.Add(dto);
 
             DBManager.Instance.WriteFile(dblist, DBPath.DBUserInfo);
@@ -127,6 +133,7 @@ namespace MMORPG.Util
             }
 
             client.account = dto;
+            
 
             var Packet = CreatePacket(PacketType.Login);
             Packet.data = SerializeHelper.ToJson(dblist.Find(_ => _.account.id == dto.id));

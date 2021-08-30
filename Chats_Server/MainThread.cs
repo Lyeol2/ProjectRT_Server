@@ -5,6 +5,7 @@ using MMORPG.DataBase;
 using MMORPG.DB;
 using MMORPG.Define;
 using MMORPG.Network;
+using MMORPG.Stage;
 using MMORPG.Util;
 
 using PacketType = MMORPG.Define.Network.PacketType;
@@ -17,7 +18,8 @@ namespace MMORPG
                
         static void Main()
         {
-
+            DBManager.Instance.Initialize();
+            StageManager.Instance.Initialize();
             //새로운 서버객체 생성
 
             if (ServerManager.Instance.CreateServer("127.0.0.1", 4826))

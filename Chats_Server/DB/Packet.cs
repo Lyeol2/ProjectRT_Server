@@ -9,8 +9,9 @@ namespace MMORPG.DB
     [System.Serializable]
     public class Packet
     {
-        // 패킷 사이즈
-        public int size;
+        public int errorCode;
+
+        public string log;
         // 패킷 타입
         public PacketType type;
         // 패킷 데이터
