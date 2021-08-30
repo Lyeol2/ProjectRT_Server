@@ -112,7 +112,6 @@ namespace MMORPG.Util
 
             client.account = dto.account;
 
-
             ServerManager.Instance.SendClient(SerializeHelper.DataToByte(Packet), client.ep);
 
 
