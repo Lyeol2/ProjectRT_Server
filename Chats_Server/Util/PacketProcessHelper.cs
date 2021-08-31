@@ -92,9 +92,6 @@ namespace MMORPG.Util
             }
 
 
-            dto.character.x = 0;
-            dto.character.y = 0;
-            dto.character.z = 0;
             dto.character.guid = Guid.NewGuid().ToString();
             dto.character.level = 0;
             dto.character.exp = 0;

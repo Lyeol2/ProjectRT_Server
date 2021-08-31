@@ -41,9 +41,6 @@ namespace MMORPG
                 var client = ServerManager.Instance.clients.Find(_ => _.account.id == a);
 
                 DtoActor dto = new DtoActor();
-                dto.x = 1;
-                dto.y = 1;
-                dto.z = 1;
                 dto.guid = "sample";
 
                 Packet pack = new Packet() { data = SerializeHelper.ToJson(dto), type = PacketType.Actor };
