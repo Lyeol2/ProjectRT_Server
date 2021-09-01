@@ -18,6 +18,8 @@ namespace MMORPG.DataBase
 
         public DtoVector position = new DtoVector();
 
+        public DtoVector lookDirect = new DtoVector();
+
         public float speed;
     }
 }
