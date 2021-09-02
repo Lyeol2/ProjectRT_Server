@@ -5,6 +5,5 @@
     {
         public DtoAccount account;
         public DtoCharacter character;
-        public DtoStage stage;
     }
 }

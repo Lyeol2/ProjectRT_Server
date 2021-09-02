@@ -25,6 +25,10 @@ namespace MMORPG.DataBase
 
             return;
         }
+        public DtoUser FindUserInfo(DtoAccount account)
+        {
+            return ReadFile<DtoUser>(DBPath.DBUserInfo).Find(_ => _.account == account);
+        }
         public void ClearFile(string path)
         {
             File.WriteAllText(path, "");

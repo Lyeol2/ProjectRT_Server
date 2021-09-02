@@ -1,1 +1,68 @@
-[{"account":{"id":"1","password":"1"},"character":{"nickName":"1","level":0,"exp":0.0,"guid":"577ee055-ea38-4103-bf15-61511aa2c34b","state":0,"direct":{"x":0.0,"y":0.0,"z":0.0},"position":{"x":0.0,"y":0.0,"z":0.0},"lookDirect":{"x":0.0,"y":0.0,"z":0.0},"speed":0.0},"stage":{"prevStageIndex":0,"stageName":"LobbyStage"}},{"account":{"id":"2","password":"2"},"character":{"nickName":"2","level":0,"exp":0.0,"guid":"92441373-8fb0-41ce-90f4-10b0cebb47a0","state":0,"direct":{"x":0.0,"y":0.0,"z":0.0},"position":{"x":0.0,"y":0.0,"z":0.0},"lookDirect":{"x":0.0,"y":0.0,"z":0.0},"speed":0.0},"stage":{"prevStageIndex":0,"stageName":"LobbyStage"}}]
+[
+  {
+    "account": {
+      "id": "1",
+      "password": "1"
+    },
+    "character": {
+      "nickName": "1",
+      "level": 0,
+      "exp": 0.0,
+      "guid": "577ee055-ea38-4103-bf15-61511aa2c34b",
+      "state": 0,
+      "direct": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "lookDirect": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "speed": 0.0
+    },
+    "stage": {
+      "prevStageIndex": 0,
+      "stageName": "LobbyStage"
+    }
+  },
+  {
+    "account": {
+      "id": "2",
+      "password": "2"
+    },
+    "character": {
+      "nickName": "2",
+      "level": 0,
+      "exp": 0.0,
+      "guid": "92441373-8fb0-41ce-90f4-10b0cebb47a0",
+      "state": 0,
+      "direct": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "lookDirect": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "speed": 0.0
+    },
+    "stage": {
+      "prevStageIndex": 0,
+      "stageName": "LobbyStage"
+    }
+  }
+]

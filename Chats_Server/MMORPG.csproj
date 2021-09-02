@@ -18,6 +18,7 @@
   <ItemGroup>
     <Folder Include="DB\StaticData\DB\Region\" />
     <Folder Include="DB\StaticData\Json\" />
+    <Folder Include="Stage\Stages\" />
   </ItemGroup>
 
 </Project>

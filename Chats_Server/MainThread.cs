@@ -9,15 +9,25 @@ using MMORPG.Stage;
 using MMORPG.Util;
 
 using PacketType = MMORPG.Define.Network.PacketType;
+
 namespace MMORPG
 {
-
+    public class Child : Parent
+    {
+        int child;
+    }
+    public class Parent
+    {
+        int parent;
+    }
     class MainThread
     {
 
                
         static void Main()
         {
+
+
             DBManager.Instance.Initialize();
             StageManager.Instance.Initialize();
             //새로운 서버객체 생성

@@ -5,7 +5,7 @@ using MMORPG.DataBase;
 using MMORPG.DB;
 using MMORPG.Define;
 using MMORPG.Network;
-
+using MMORPG.Stage;
 
 namespace MMORPG.Util
 {
@@ -55,6 +55,8 @@ namespace MMORPG.Util
                 case PacketType.Logout:
                     return;
                 case PacketType.Join:
+                    DtoUser user = DBManager.Instance.FindUserInfo(client.account);
+                    JoinGame(user);
                     client.IsLogin = true;
                     return;
                 case PacketType.Message:
@@ -68,6 +70,10 @@ namespace MMORPG.Util
                 default:
                     return;
             }
+        }
+        public static void JoinGame(DtoUser user)
+        {
+            StageManager.Instance.
         }
         public static void OnFailed(string ep, int errorCode)
         {
