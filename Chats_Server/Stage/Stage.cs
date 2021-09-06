@@ -9,6 +9,11 @@ namespace MMORPG.Stage
         public List<DtoActor> actors = new List<DtoActor>();
 
 
+        public void ActorSpawn()
+        {
+
+        }
+
 
 
 
