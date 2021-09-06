@@ -64,7 +64,9 @@ namespace MMORPG.Util
                 case PacketType.Log:
                     return;
                 case PacketType.Actor:
-   
+                    ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
+                    return;
+                case PacketType.Character:
                     ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
                     return;
                 default:
@@ -73,7 +75,6 @@ namespace MMORPG.Util
         }
         public static void JoinGame(DtoUser user)
         {
-            StageManager.Instance.
         }
         public static void OnFailed(string ep, int errorCode)
         {
@@ -101,9 +102,6 @@ namespace MMORPG.Util
             dto.character.guid = Guid.NewGuid().ToString();
             dto.character.level = 0;
             dto.character.exp = 0;
-
-            dto.stage.prevStageIndex = 0;
-            dto.stage.stageName = "LobbyStage";
 
             dblist.Add(dto);
 
