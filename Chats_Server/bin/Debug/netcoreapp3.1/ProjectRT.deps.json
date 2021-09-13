@@ -6,12 +6,12 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v3.1": {
-      "Chats_Server/1.0.0": {
+      "ProjectRT/1.0.0": {
         "dependencies": {
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
-          "Chats_Server.dll": {}
+          "ProjectRT.dll": {}
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -25,7 +25,7 @@
     }
   },
   "libraries": {
-    "Chats_Server/1.0.0": {
+    "ProjectRT/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

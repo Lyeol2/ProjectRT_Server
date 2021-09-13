@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DB\StaticData\Exel\**" />
+    <EmbeddedResource Remove="DB\StaticData\Exel\**" />
+    <None Remove="DB\StaticData\Exel\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DB\StaticData\DB\Region\" />
+    <Folder Include="DB\StaticData\Json\" />
+    <Folder Include="Stage\Stages\" />
+  </ItemGroup>
+
+</Project>

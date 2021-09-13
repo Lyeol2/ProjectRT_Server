@@ -1,1 +1,33 @@
-[{"account":{"id":"1","password":"1"},"character":{"nickName":"1","level":0,"exp":0.0,"guid":"3e2a2e96-232d-4af1-af02-b7bfc169e1a2","state":0,"direct":{"x":0.0,"y":0.0,"z":0.0},"position":{"x":0.0,"y":0.0,"z":0.0},"lookDirect":{"x":0.0,"y":0.0,"z":0.0},"speed":0.0},"stage":1}]
+[
+  
+  {
+    "account": {
+      "id": "1",
+      "password": "1"
+    },
+    "character": {
+      "nickName": "1",
+      "level": 0,
+      "exp": 0.0,
+      "guid": "3e2a2e96-232d-4af1-af02-b7bfc169e1a2",
+      "state": 0,
+      "direct": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "lookDirect": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "speed": 0.0
+    },
+    "stage": 1
+  }
+]

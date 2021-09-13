@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ProjectRT.DataBase;
+using ProjectRT.DB;
+using ProjectRT.Network;
+using ProjectRT.Object;
+using ProjectRT.Util;
+using System;
 using System.Threading;
-using MMORPG.DataBase;
-using MMORPG.DB;
-using MMORPG.Define;
-using MMORPG.Network;
-using MMORPG.Stage;
-using MMORPG.Util;
+using PacketType = ProjectRT.Define.Network.PacketType;
 
-using PacketType = MMORPG.Define.Network.PacketType;
-
-namespace MMORPG
+namespace ProjectRT
 {
     class MainThread
     {
@@ -39,19 +35,22 @@ namespace MMORPG
         static bool Command()
         {
             // 콘솔에 대한 명령.
-            string a = Console.ReadLine();
+            string input = Console.ReadLine();
 
-            if (!ServerManager.Instance.clients.Exists(_ => _.account.id == a)) return true;
+            string[] command = input.Split(' ');
 
-            var client = ServerManager.Instance.clients.Find(_ => _.account.id == a);
+            if(command[0] == "spawn")
+            {
+                var packet = PacketProcessHelper.CreatePacket(PacketType.Monster);
+                var monster = ObjectManager.Instance.SpawnMonster(int.Parse(command[1]));
+                packet.data = SerializeHelper.ToJson(monster);
 
-            DtoActor dto = new DtoActor();
-            dto.guid = "sample";
+                ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
 
-            Packet pack = new Packet() { data = SerializeHelper.ToJson(dto), type = PacketType.Actor };
-
-            Console.WriteLine("Send!");
-            ServerManager.Instance.SendClient(SerializeHelper.DataToByte(pack), client.ep);
+                var mob = new Monster();
+                mob.Initialize(monster);
+                ObjectManager.Instance.monster.Add(mob);
+            }
 
             return true;
         }
@@ -59,7 +58,7 @@ namespace MMORPG
         {
             while (true)
             {
-
+                ObjectManager.Instance.Update();
             }
         }
 

@@ -1,9 +1,9 @@
-﻿using MMORPG.Util;
+﻿using ProjectRT.Util;
 using System.Collections.Generic;
 using System.IO;
-using MMORPG.Define;
+using ProjectRT.Define;
 
-namespace MMORPG.DataBase
+namespace ProjectRT.DataBase
 {
     public class DBManager : Singleton<DBManager>
     {

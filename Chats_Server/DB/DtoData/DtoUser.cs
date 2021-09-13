@@ -1,4 +1,4 @@
-﻿namespace MMORPG.DataBase
+﻿namespace ProjectRT.DataBase
 { 
     [System.Serializable]
     public class DtoUser

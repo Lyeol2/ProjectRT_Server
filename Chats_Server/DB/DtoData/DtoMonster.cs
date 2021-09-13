@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MMORPG.DB.DtoData
+﻿namespace ProjectRT.DataBase
 {
-    class DtoMonster
+    public class DtoMonster : DtoActor
     {
+        public int monsterIndex;
+        // 타게팅에 대한 정보
+        public bool isTargeting;
     }
 }

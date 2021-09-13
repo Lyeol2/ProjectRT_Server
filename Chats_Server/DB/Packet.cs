@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MMORPG.DB
+namespace ProjectRT.DB
 {
     using PacketType = Define.Network.PacketType;
 

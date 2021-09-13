@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using MMORPG.DataBase;
-using MMORPG.DB;
-using MMORPG.Define;
-using MMORPG.Network;
-using MMORPG.Stage;
+using ProjectRT.DataBase;
+using ProjectRT.DB;
+using ProjectRT.Define;
+using ProjectRT.Network;
+using ProjectRT.Object;
+using ProjectRT.Stage;
 
-namespace MMORPG.Util
+namespace ProjectRT.Util
 {
 
     using PacketType = Define.Network.PacketType;
@@ -56,6 +57,7 @@ namespace MMORPG.Util
                     return;
                 case PacketType.Join:
                     DtoUser user = DBManager.Instance.FindUserInfo(client.account);
+                    ObjectManager.Instance.users.Add(user);
                     client.IsLogin = true;
                     return;
                 case PacketType.Message:
@@ -66,7 +68,12 @@ namespace MMORPG.Util
                     ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
                     return;
                 case PacketType.Character:
+                    //ObjectManager.Instance.FindUserInfo(client.account).character = SerializeHelper.FromJson<DtoCharacter>(packet.data);
                     ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
+                    return;
+                case PacketType.Monster:
+                    //ObjectManager.Instance.SetMonsterInfo(dtoMonster);
+                    var dtoMonster = SerializeHelper.FromJson<DtoMonster>(packet.data);
                     return;
                 default:
                     return;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MMORPG.Util.STL
+namespace ProjectRT.Util.STL
 {
     class Pair
     {

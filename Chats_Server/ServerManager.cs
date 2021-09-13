@@ -1,4 +1,4 @@
-﻿using MMORPG.Util;
+﻿using ProjectRT.Util;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -6,11 +6,12 @@ using System.Net.Sockets;
 using System.Threading;
 using Newtonsoft.Json;
 using System.IO;
-using MMORPG.Define;
-using MMORPG.DB;
-using MMORPG.DataBase;
+using ProjectRT.Define;
+using ProjectRT.DB;
+using ProjectRT.DataBase;
+using ProjectRT.Object;
 
-namespace MMORPG.Network
+namespace ProjectRT.Network
 {
 
     public class Client
@@ -159,7 +160,7 @@ namespace MMORPG.Network
 
 
             WriteLog($"[-] : {client.ep}", true);
-
+            ObjectManager.Instance.users.RemoveAll(_ => _.account == client.account);
 
             client.socket.Close();
             clients.Remove(client);

@@ -1,4 +1,4 @@
-﻿namespace MMORPG.Util
+﻿namespace ProjectRT.Util
 {
     public abstract class Singleton<T> where T : Singleton<T>, new()
     {

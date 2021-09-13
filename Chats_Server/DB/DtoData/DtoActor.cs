@@ -1,9 +1,9 @@
-﻿using MMORPG.Util.STL;
+﻿using ProjectRT.Util.STL;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MMORPG.DataBase
+namespace ProjectRT.DataBase
 {
     using ActorState = Define.Actor.ActorState;
 
@@ -22,6 +22,5 @@ namespace MMORPG.DataBase
 
         public float speed;
 
-        public string resourcePath;
     }
 }

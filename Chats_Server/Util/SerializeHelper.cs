@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MMORPG.Util
+namespace ProjectRT.Util
 {
     public static class SerializeHelper
     {

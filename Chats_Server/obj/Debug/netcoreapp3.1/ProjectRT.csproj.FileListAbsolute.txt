@@ -1,0 +1,15 @@
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\obj\Debug\netcoreapp3.1\ProjectRT.AssemblyInfoInputs.cache
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\obj\Debug\netcoreapp3.1\ProjectRT.AssemblyInfo.cs
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\obj\Debug\netcoreapp3.1\ProjectRT.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\obj\Debug\netcoreapp3.1\ProjectRT.csprojAssemblyReference.cache
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\bin\Debug\netcoreapp3.1\ProjectRT.exe
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\bin\Debug\netcoreapp3.1\ProjectRT.deps.json
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\bin\Debug\netcoreapp3.1\ProjectRT.runtimeconfig.json
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\bin\Debug\netcoreapp3.1\ProjectRT.runtimeconfig.dev.json
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\bin\Debug\netcoreapp3.1\ProjectRT.dll
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\bin\Debug\netcoreapp3.1\ProjectRT.pdb
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\obj\Debug\netcoreapp3.1\ProjectRT.csproj.CopyComplete
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\obj\Debug\netcoreapp3.1\ProjectRT.dll
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\obj\Debug\netcoreapp3.1\ProjectRT.pdb
+C:\Users\Administrator\Documents\GitHub\ProjectRT_Server\Chats_Server\obj\Debug\netcoreapp3.1\ProjectRT.genruntimeconfig.cache
