@@ -56,7 +56,6 @@ namespace MMORPG.Util
                     return;
                 case PacketType.Join:
                     DtoUser user = DBManager.Instance.FindUserInfo(client.account);
-                    JoinGame(user);
                     client.IsLogin = true;
                     return;
                 case PacketType.Message:
@@ -72,9 +71,6 @@ namespace MMORPG.Util
                 default:
                     return;
             }
-        }
-        public static void JoinGame(DtoUser user)
-        {
         }
         public static void OnFailed(string ep, int errorCode)
         {
@@ -103,6 +99,8 @@ namespace MMORPG.Util
             dto.character.level = 0;
             dto.character.exp = 0;
 
+            dto.stage = Define.Stage.LobbyStage;
+
             dblist.Add(dto);
 
             DBManager.Instance.WriteFile(dblist, DBPath.DBUserInfo);
@@ -110,6 +108,7 @@ namespace MMORPG.Util
             var Packet = CreatePacket(PacketType.Register);
 
             Packet.data = SerializeHelper.ToJson(dto);
+            dto.character.resourcePath = "Prefabs/Character/knight";
 
             client.account = dto.account;
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using MMORPG.DataBase;
 using MMORPG.DB;
 using MMORPG.Define;
@@ -12,21 +13,10 @@ using PacketType = MMORPG.Define.Network.PacketType;
 
 namespace MMORPG
 {
-    public class Child : Parent
-    {
-        int child;
-    }
-    public class Parent
-    {
-        int parent;
-    }
     class MainThread
     {
-
-               
         static void Main()
         {
-
 
             DBManager.Instance.Initialize();
             //새로운 서버객체 생성
@@ -40,22 +30,35 @@ namespace MMORPG
                 Console.WriteLine("서버 생성에 실패했습니다.");
             }
 
+            Thread gameUpdate = new Thread(() => GameUpdate());
+            gameUpdate.Start();
+
+            while (Command()) { };
+
+        }
+        static bool Command()
+        {
+            // 콘솔에 대한 명령.
+            string a = Console.ReadLine();
+
+            if (!ServerManager.Instance.clients.Exists(_ => _.account.id == a)) return true;
+
+            var client = ServerManager.Instance.clients.Find(_ => _.account.id == a);
+
+            DtoActor dto = new DtoActor();
+            dto.guid = "sample";
+
+            Packet pack = new Packet() { data = SerializeHelper.ToJson(dto), type = PacketType.Actor };
+
+            Console.WriteLine("Send!");
+            ServerManager.Instance.SendClient(SerializeHelper.DataToByte(pack), client.ep);
+
+            return true;
+        }
+        static void GameUpdate()
+        {
             while (true)
             {
-                // 콘솔에 대한 명령.
-                string a = Console.ReadLine();
-
-                if (!ServerManager.Instance.clients.Exists(_ => _.account.id == a)) continue;
-
-                var client = ServerManager.Instance.clients.Find(_ => _.account.id == a);
-
-                DtoActor dto = new DtoActor();
-                dto.guid = "sample";
-
-                Packet pack = new Packet() { data = SerializeHelper.ToJson(dto), type = PacketType.Actor };
-
-                Console.WriteLine("Send!");
-                ServerManager.Instance.SendClient(SerializeHelper.DataToByte(pack), client.ep);
 
             }
         }

@@ -5,5 +5,6 @@
     {
         public DtoAccount account;
         public DtoCharacter character;
+        public Define.Stage stage;
     }
 }

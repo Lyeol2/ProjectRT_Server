@@ -5,5 +5,8 @@ using System.Collections.Generic;
 
 namespace MMORPG.Stage
 {
+    public class StageManager : Singleton<StageManager>
+    {
 
+    }
 }

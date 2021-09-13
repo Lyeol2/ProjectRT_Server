@@ -13,6 +13,11 @@ namespace MMORPG.Define
 
         public enum AttackType { Normal, Projectile }
     }
+    public enum Stage
+    {
+        TestStage,
+        LobbyStage,
+    }
     public class Network
     {
         public enum PacketType
@@ -25,6 +30,8 @@ namespace MMORPG.Define
             Log,
             Actor,
             Character,
+            PlayerCharacter,
+            Monster,
         }
 
     }
@@ -33,7 +40,9 @@ namespace MMORPG.Define
     public class DBPath
     {
         // 집 학원
+
         public const string curFile = "C:/Users/wjs/Documents/GitHub/ProjectRT_Server/Chats_Server/";
+
         //public const string curFile = "C:/Users/Administrator/Documents/GitHub/ProjectRT_Server/Chats_Server/";
 
         public const string DBLog = curFile + "DB/StaticData/DB/Log.txt";

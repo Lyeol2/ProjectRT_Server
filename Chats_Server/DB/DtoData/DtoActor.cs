@@ -21,5 +21,7 @@ namespace MMORPG.DataBase
         public DtoVector lookDirect = new DtoVector();
 
         public float speed;
+
+        public string resourcePath;
     }
 }
