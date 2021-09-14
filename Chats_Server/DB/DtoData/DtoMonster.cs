@@ -4,6 +4,6 @@
     {
         public int monsterIndex;
         // 타게팅에 대한 정보
-        public bool isTargeting;
+        public string targetName;
     }
 }

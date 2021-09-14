@@ -147,7 +147,6 @@ namespace ProjectRT.Network
                 }
                 catch(Exception ex)
                 {
-                    Console.WriteLine($"{client.ep} : {ex}");
                     continue;
                 }
                 // 버퍼가 비어있지않다면
@@ -161,7 +160,7 @@ namespace ProjectRT.Network
 
             WriteLog($"[-] : {client.ep}", true);
 
-            ObjectManager.Instance.users.RemoveAll(_ => _.account == client.account);
+            ObjectManager.Instance.users.RemoveAll(_ => _.account.id == client.account.id);
 
 
             client.socket.Close();

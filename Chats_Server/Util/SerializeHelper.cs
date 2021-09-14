@@ -20,7 +20,6 @@ namespace ProjectRT.Util
             }
             catch(Exception ex)
             {
-                Console.WriteLine(data);
                 throw new Exception("비정상적 데이터가 들어왔습니다.");
             }
         }

@@ -20,9 +20,12 @@ namespace ProjectRT.Object
         }
         public void Update()
         {
-            foreach(var item in monster)
+            if (monster.Count > 0)
             {
-                item.ActorUpdate();
+                foreach (var item in monster)
+                {
+                    item.ActorUpdate();
+                }
             }
         }
         public void SetCharacterInfo(DtoCharacter character)
@@ -41,7 +44,7 @@ namespace ProjectRT.Object
         {
             var dto = new DtoMonster()
             {
-                isTargeting = false,
+                targetName = null,
                 monsterIndex = index,
                 position = new DtoVector() { x = 0, y = 0, z = 0 },
                 guid = Guid.NewGuid().ToString(),

@@ -31,7 +31,7 @@ namespace ProjectRT
             gameUpdate.Start();
 
             while (Command()) { };
-
+            
         }
         static bool Command()
         {
@@ -42,15 +42,13 @@ namespace ProjectRT
 
             if(command[0] == "spawn")
             {
-                var packet = PacketProcessHelper.CreatePacket(PacketType.Monster);
                 var monster = ObjectManager.Instance.SpawnMonster(int.Parse(command[1]));
-                packet.data = SerializeHelper.ToJson(monster);
 
                 var mob = new Monster();
                 mob.Initialize(monster);
                 ObjectManager.Instance.monster.Add(mob);
 
-                ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
+
             }
 
             return true;
@@ -59,6 +57,7 @@ namespace ProjectRT
         {
             while (true)
             {
+                Thread.Sleep(200);
                 ObjectManager.Instance.Update();
             }
         }
