@@ -160,7 +160,9 @@ namespace ProjectRT.Network
 
 
             WriteLog($"[-] : {client.ep}", true);
+
             ObjectManager.Instance.users.RemoveAll(_ => _.account == client.account);
+
 
             client.socket.Close();
             clients.Remove(client);

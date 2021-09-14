@@ -27,7 +27,7 @@ namespace ProjectRT.DataBase
         }
         public DtoUser FindUserInfo(DtoAccount account)
         {
-            return ReadFile<DtoUser>(DBPath.DBUserInfo).Find(_ => _.account == account);
+            return ReadFile<DtoUser>(DBPath.DBUserInfo).Find(_ => _.account.id == account.id);
         }
         public void ClearFile(string path)
         {

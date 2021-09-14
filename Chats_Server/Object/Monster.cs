@@ -20,8 +20,6 @@ namespace ProjectRT.Object
 
             // 타게팅을 켜줌
             Console.WriteLine(user.character.nickName + ": 3칸거리 내로 접근");
-
-
         }
         public bool CheckingInRangeUser(DtoVector A, DtoVector B, float range)
         {

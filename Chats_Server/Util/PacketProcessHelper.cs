@@ -56,7 +56,9 @@ namespace ProjectRT.Util
                 case PacketType.Logout:
                     return;
                 case PacketType.Join:
+                    Console.WriteLine("123");
                     DtoUser user = DBManager.Instance.FindUserInfo(client.account);
+                    Console.WriteLine(user.character.nickName);
                     ObjectManager.Instance.users.Add(user);
                     client.IsLogin = true;
                     return;
@@ -68,12 +70,12 @@ namespace ProjectRT.Util
                     ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
                     return;
                 case PacketType.Character:
-                    //ObjectManager.Instance.FindUserInfo(client.account).character = SerializeHelper.FromJson<DtoCharacter>(packet.data);
+                    ObjectManager.Instance.SetCharacterInfo(SerializeHelper.FromJson<DtoCharacter>(packet.data));
                     ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
                     return;
                 case PacketType.Monster:
-                    //ObjectManager.Instance.SetMonsterInfo(dtoMonster);
                     var dtoMonster = SerializeHelper.FromJson<DtoMonster>(packet.data);
+                    ObjectManager.Instance.SetMonsterInfo(dtoMonster);
                     return;
                 default:
                     return;

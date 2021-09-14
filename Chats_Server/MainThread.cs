@@ -15,6 +15,7 @@ namespace ProjectRT
         {
 
             DBManager.Instance.Initialize();
+            ObjectManager.Instance.Initialize();
             //새로운 서버객체 생성
 
             if (ServerManager.Instance.CreateServer("127.0.0.1", 4826))
@@ -45,11 +46,11 @@ namespace ProjectRT
                 var monster = ObjectManager.Instance.SpawnMonster(int.Parse(command[1]));
                 packet.data = SerializeHelper.ToJson(monster);
 
-                ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
-
                 var mob = new Monster();
                 mob.Initialize(monster);
                 ObjectManager.Instance.monster.Add(mob);
+
+                ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
             }
 
             return true;
