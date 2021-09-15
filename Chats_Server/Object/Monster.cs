@@ -19,6 +19,15 @@ namespace ProjectRT.Object
                 this.actor = actor as DtoMonster;
             }
         }
+        public override void SetActorInfo(DtoActor actor)
+        {
+            base.SetActorInfo(actor);
+
+            if(actor is DtoMonster)
+            {
+                this.actor = actor as DtoMonster;
+            }
+        }
         public override void ActorUpdate()
         {
             base.ActorUpdate();
@@ -45,7 +54,7 @@ namespace ProjectRT.Object
             {
                 packet.data = SerializeHelper.ToJson(actor as DtoMonster);
 
-                ServerManager.Instance.recvQueue.Enqueue(new KeyValuePair<Client, DB.Packet>(new Client(), packet));
+                ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
 
                 return;
             }
@@ -54,6 +63,7 @@ namespace ProjectRT.Object
             (actor as DtoMonster).targetName = user.character.nickName;
 
             Console.WriteLine(user.character.nickName + ": 3칸거리 내로 접근");
+
             Client client = ServerManager.Instance.clients.Find(_ => _.account.id == user.account.id);
 
             packet = PacketProcessHelper.CreatePacket(Define.Network.PacketType.Monster);

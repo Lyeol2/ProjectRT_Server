@@ -73,7 +73,7 @@ namespace ProjectRT.Util
                     return;
                 case PacketType.Monster:
                     var dtoMonster = SerializeHelper.FromJson<DtoMonster>(packet.data);
-                    ObjectManager.Instance.SetMonsterInfo(dtoMonster);
+                    ObjectManager.Instance.actorQueue.Enqueue(dtoMonster);
                     ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
                     return;
                 default:

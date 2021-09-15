@@ -13,6 +13,10 @@ namespace ProjectRT.Object
         {
 
         }
+        public virtual void SetActorInfo(DtoActor actor)
+        {
+            this.actor = actor;
+        }
         public virtual void Destory()
         {
 

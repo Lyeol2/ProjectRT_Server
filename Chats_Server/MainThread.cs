@@ -57,7 +57,7 @@ namespace ProjectRT
         {
             while (true)
             {
-                Thread.Sleep(200);
+                Thread.Sleep(100);
                 ObjectManager.Instance.Update();
             }
         }
