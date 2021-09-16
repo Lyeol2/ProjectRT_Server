@@ -28,21 +28,31 @@ namespace ProjectRT.Object
                 this.actor = actor as DtoMonster;
             }
         }
-        public override void ActorUpdate()
+        public override void ActorUpdate(DtoActor actor = null)
         {
-            base.ActorUpdate();
+            base.ActorUpdate(actor);
 
-            // 타게팅 중이라면 실행하지 않음.
+            // 타겟 프로세스가 작동중이 아니라면 리턴
+            if(!WaitingTargetProcess(actor as DtoMonster)) return;
 
+            // 널값이면 세팅할 필요가 없다.
+            if (actor == null) return;
 
+            SetActorInfo(actor);
+
+        }
+        public bool WaitingTargetProcess(DtoMonster dto)
+        {
+            bool dontFindUser = false;
             if ((actor as DtoMonster).targetName != null)
             {
                 if (ObjectManager.Instance.users.Exists(_ => _.character.nickName == (actor as DtoMonster).targetName))
                 {
-                    return;
+                    return false;
                 }
                 else
                 {
+                    Console.WriteLine("감지 해제");
                     (actor as DtoMonster).targetName = null;
                 }
             }
@@ -56,11 +66,12 @@ namespace ProjectRT.Object
 
                 ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
 
-                return;
+                return false;
             }
 
             // 타게팅을 켜줌
             (actor as DtoMonster).targetName = user.character.nickName;
+
 
             Console.WriteLine(user.character.nickName + ": 3칸거리 내로 접근");
 
@@ -71,6 +82,8 @@ namespace ProjectRT.Object
             packet.data = SerializeHelper.ToJson(actor as DtoMonster);
 
             ServerManager.Instance.recvQueue.Enqueue(new KeyValuePair<Client, DB.Packet>(new Client(), packet));
+
+            return false;
         }
         public bool CheckingInRangeUser(DtoVector A, DtoVector B, float range)
         {

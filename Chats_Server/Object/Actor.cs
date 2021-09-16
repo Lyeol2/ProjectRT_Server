@@ -9,7 +9,7 @@ namespace ProjectRT.Object
         {
             this.actor = actor;
         }
-        public virtual void ActorUpdate()
+        public virtual void ActorUpdate(DtoActor actor = null)
         {
 
         }

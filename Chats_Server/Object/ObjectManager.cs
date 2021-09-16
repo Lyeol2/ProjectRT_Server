@@ -20,29 +20,25 @@ namespace ProjectRT.Object
         }
         public void ActorUpdate()
         {
-            if (actorQueue.Count > 0)
-            {
-                DtoActor actor = actorQueue.Dequeue() as DtoActor;
+            DtoActor actor = null;
+            if (actorQueue.Count > 0) actor = actorQueue.Dequeue() as DtoActor;
 
-                foreach (var item in monster)
+            foreach (var item in monster)
+            {
+                if (actor?.guid == item.actor.guid)
                 {
-                    if (actor.guid == item.actor.guid)
-                    {
-                        item.SetActorInfo(actor as DtoMonster);
-                    }
+                    item.ActorUpdate(actor as DtoMonster);
+                }
+                else
+                {
+                    item.ActorUpdate();
                 }
             }
         }
         public void Update()
         {
-            if (monster.Count > 0)
-            {
-                foreach(var item in monster)
-                {
-                    item.ActorUpdate();
-                }
-            }
             ActorUpdate();
+
         }
         public void SetCharacterInfo(DtoCharacter character)
         {
