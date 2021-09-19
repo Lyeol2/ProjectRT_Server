@@ -9,7 +9,39 @@
       "nickName": "1",
       "level": 0,
       "exp": 0.0,
-      "guid": "3e2a2e96-232d-4af1-af02-b7bfc169e1a2",
+      "resourcePath": "Prefabs/Character/knight",
+      "guid": "c76dcb85-97cb-4139-b3d0-a0f7466af9ef",
+      "state": 0,
+      "direct": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "lookDirect": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "speed": 0.0
+    },
+    "stage": 1
+  },
+  {
+    "account": {
+      "id": "2",
+      "password": "2"
+    },
+    "character": {
+      "nickName": "2",
+      "level": 0,
+      "exp": 0.0,
+      "resourcePath": "Prefabs/Character/knight",
+      "guid": "49bc6c3d-8b20-45ce-bab3-3b1cf9194c9b",
       "state": 0,
       "direct": {
         "x": 0.0,

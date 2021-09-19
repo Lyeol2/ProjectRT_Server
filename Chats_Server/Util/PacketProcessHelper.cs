@@ -73,6 +73,7 @@ namespace ProjectRT.Util
                     return;
                 case PacketType.Monster:
                     var dtoMonster = SerializeHelper.FromJson<DtoMonster>(packet.data);
+                    
                     ObjectManager.Instance.actorQueue.Enqueue(dtoMonster);
                     ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
                     return;
@@ -106,6 +107,7 @@ namespace ProjectRT.Util
             dto.character.guid = Guid.NewGuid().ToString();
             dto.character.level = 0;
             dto.character.exp = 0;
+            dto.character.resourcePath = "Prefabs/Character/knight";
 
             dto.stage = Define.Stage.LobbyStage;
 
@@ -116,7 +118,6 @@ namespace ProjectRT.Util
             var Packet = CreatePacket(PacketType.Register);
 
             Packet.data = SerializeHelper.ToJson(dto);
-            dto.character.resourcePath = "Prefabs/Character/knight";
 
             client.account = new DtoAccount() { id = dto.account.id, password = dto.account.password };
 
