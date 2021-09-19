@@ -37,15 +37,15 @@ namespace ProjectRT.Object
 
             // 널값이면 세팅할 필요가 없다.
             if (actor == null) return;
-
             SetActorInfo(actor);
 
         }
-        public bool WaitingTargetProcess(DtoMonster dto)
+        public bool WaitingTargetProcess(DtoMonster dto = null)
         {
-            bool dontFindUser = false;
+
             if ((actor as DtoMonster).targetName != null)
             {
+
                 if (ObjectManager.Instance.users.Exists(_ => _.character.nickName == (actor as DtoMonster).targetName))
                 {
                     return false;
@@ -54,18 +54,24 @@ namespace ProjectRT.Object
                 {
                     Console.WriteLine("감지 해제");
                     (actor as DtoMonster).targetName = null;
+                    actor.direct = new DtoVector() { x = 0, y = 0, z = 0, };
+                    actor.state = Define.Actor.ActorState.Idle;
                 }
             }
             var user = FindInRangeUser();
 
             var packet = PacketProcessHelper.CreatePacket(Define.Network.PacketType.Monster);
 
+            // 어그로가 해제된 상태
             if (user == null)
             {
+                if(dto != null)
+                {
+                    actor = dto;
+                }
                 packet.data = SerializeHelper.ToJson(actor as DtoMonster);
-
+                
                 ServerManager.Instance.SendAllClient(SerializeHelper.DataToByte(packet));
-
                 return false;
             }
 

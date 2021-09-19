@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\wjs\\Documents\\GitHub\\ProjectRT_Server\\Chats_Server\\ProjectRT.csproj": {}
+    "D:\\GitHubDocument\\ProjectRT_Server\\Chats_Server\\ProjectRT.csproj": {}
   },
   "projects": {
-    "C:\\Users\\wjs\\Documents\\GitHub\\ProjectRT_Server\\Chats_Server\\ProjectRT.csproj": {
+    "D:\\GitHubDocument\\ProjectRT_Server\\Chats_Server\\ProjectRT.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\wjs\\Documents\\GitHub\\ProjectRT_Server\\Chats_Server\\ProjectRT.csproj",
+        "projectUniqueName": "D:\\GitHubDocument\\ProjectRT_Server\\Chats_Server\\ProjectRT.csproj",
         "projectName": "ProjectRT",
-        "projectPath": "C:\\Users\\wjs\\Documents\\GitHub\\ProjectRT_Server\\Chats_Server\\ProjectRT.csproj",
-        "packagesPath": "C:\\Users\\wjs\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\wjs\\Documents\\GitHub\\ProjectRT_Server\\Chats_Server\\obj\\",
+        "projectPath": "D:\\GitHubDocument\\ProjectRT_Server\\Chats_Server\\ProjectRT.csproj",
+        "packagesPath": "C:\\Users\\frog1\\.nuget\\packages\\",
+        "outputPath": "D:\\GitHubDocument\\ProjectRT_Server\\Chats_Server\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\wjs\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\frog1\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -60,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }
